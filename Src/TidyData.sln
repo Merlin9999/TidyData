@@ -7,12 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TidyData", "TidyData\TidyDa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TidyData.Tests", "TidyData.Tests\TidyData.Tests.csproj", "{FD683B1C-E93C-4EF8-98C4-363A68F07ACA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\build\_build.csproj", "{43667ABD-1FE9-4620-BF3F-8D8FCB3C6625}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43667ABD-1FE9-4620-BF3F-8D8FCB3C6625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43667ABD-1FE9-4620-BF3F-8D8FCB3C6625}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{841464DD-66C3-4361-956F-3726436E23C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{841464DD-66C3-4361-956F-3726436E23C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{841464DD-66C3-4361-956F-3726436E23C3}.Release|Any CPU.ActiveCfg = Release|Any CPU

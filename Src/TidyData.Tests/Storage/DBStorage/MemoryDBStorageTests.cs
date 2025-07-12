@@ -2,6 +2,7 @@
  using NodaTime;
  using TidyData.SnapshotLog;
  using TidyData.Storage;
+ using TidyData.Tests._Shared_Synced;
  using TidyData.Tests.TestModel;
  using TidyUtility.Data.Json;
 

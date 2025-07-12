@@ -1,7 +1,7 @@
 ﻿#nullable disable
 
 // ReSharper disable CheckNamespace
-namespace TidyData.Tests._Shared_Synced;
+namespace TidyData.Tests._Shared_Synced.Helpers;
 
 public static class TestFolders
 {

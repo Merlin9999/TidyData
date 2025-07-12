@@ -3,6 +3,8 @@
  using NodaTime.Testing;
  using TidyData.SnapshotLog;
  using TidyData.Tests._Shared_Synced;
+ using TidyData.Tests._Shared_Synced.SnapshotLog;
+ using TidyData.Tests._Shared_Synced.TestImpl;
 
  namespace TidyData.Tests.SnapshotLog
 {

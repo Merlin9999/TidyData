@@ -3,10 +3,10 @@ using FluentAssertions;
 using NodaTime;
 using NodaTime.Testing;
 using TidyData.SnapshotLog;
-using TidyData.Tests._Shared_Synced;
+using TidyData.Tests._Shared_Synced.SnapshotLog;
 
 // ReSharper disable CheckNamespace
-namespace TidyData.Tests._Shared_Synced;
+namespace TidyData.Tests._Shared_Synced.TestImpl;
 
 public static class SnapshotLogTestsImpl
 {

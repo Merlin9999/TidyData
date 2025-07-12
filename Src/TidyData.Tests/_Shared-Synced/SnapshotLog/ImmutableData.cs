@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 
 // ReSharper disable CheckNamespace
-namespace TidyData.Tests._Shared_Synced;
+namespace TidyData.Tests._Shared_Synced.SnapshotLog;
 
 public class ImmutableData
 {

@@ -2,9 +2,9 @@
  using FluentAssertions;
  using NodaTime.Testing;
  using TidyData.Sync;
- using TidyData.Tests.TestModel;
- using TidyData.Tests.TestModel.Cmd;
- using TidyData.Tests.TestModel.Qry;
+ using TidyData.Tests._Shared_Synced.TestModel;
+ using TidyData.Tests._Shared_Synced.TestModel.Cmd;
+ using TidyData.Tests._Shared_Synced.TestModel.Qry;
 
  namespace TidyData.Tests.Sync
 {

@@ -6,3 +6,4 @@ using System.Text;
 using System.Threading.Tasks;
 
 [assembly: InternalsVisibleTo("TidyData.Tests")]
+[assembly: InternalsVisibleTo("TidyData.Azure.Tests")]

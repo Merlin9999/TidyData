@@ -2,7 +2,9 @@
  using NodaTime;
  using TidyData.SnapshotLog;
  using TidyData.Storage;
- using TidyData.Tests.TestModel;
+ using TidyData.Tests._Shared_Synced;
+ using TidyData.Tests._Shared_Synced.TestImpl;
+ using TidyData.Tests._Shared_Synced.TestModel;
  using TidyUtility.Data.Json;
 
  namespace TidyData.Tests.Storage.DBStorage

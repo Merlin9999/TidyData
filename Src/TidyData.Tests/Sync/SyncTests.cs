@@ -7,8 +7,8 @@
  using TidyData.SnapshotLog;
  using TidyData.Storage;
  using TidyData.Sync;
+ using TidyData.Tests._Shared_Synced.TestModel;
  using TidyData.Tests.Helpers;
- using TidyData.Tests.TestModel;
  using TidyMediator;
  using TidyUtility.Data.Json;
 

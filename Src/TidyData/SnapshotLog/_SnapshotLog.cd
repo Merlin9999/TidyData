@@ -1,39 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="TidyUtility.Data.Storage.AbstractSnapshotLog&lt;T&gt;">
+  <Class Name="TidyData.SnapshotLog.AbstractSnapshotLog&lt;T&gt;">
     <Position X="3.75" Y="0.5" Width="3.5" />
     <NestedTypes>
-      <Class Name="TidyUtility.Data.Storage.AbstractSnapshotLog&lt;T&gt;.SnapshotNameFilterMetadata" Collapsed="true">
+      <Class Name="TidyData.SnapshotLog.AbstractSnapshotLog&lt;T&gt;.SnapshotNameFilterMetadata" Collapsed="true">
         <TypeIdentifier>
-          <NewMemberFileName>Storage\AbstractSnapshotLog.cs</NewMemberFileName>
+          <NewMemberFileName>SnapshotLog\AbstractSnapshotLog.cs</NewMemberFileName>
         </TypeIdentifier>
       </Class>
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAEAEAAAASAICAAAiAQAABAAAAAQAEggAAgALEAAMA=</HashCode>
-      <FileName>Storage\AbstractSnapshotLog.cs</FileName>
+      <FileName>SnapshotLog\AbstractSnapshotLog.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="TidyUtility.Data.Storage.MemorySnapshotLog&lt;T&gt;">
+  <Class Name="TidyData.SnapshotLog.MemorySnapshotLog&lt;T&gt;">
     <Position X="2.5" Y="7.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAEAAAgAACAAAAAAAAAAABAACAAAAEAAAAAAIAAAIA=</HashCode>
-      <FileName>Storage\MemorySnapshotLog.cs</FileName>
+      <FileName>SnapshotLog\MemorySnapshotLog.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TidyUtility.Data.Storage.FileSnapshotLog&lt;T&gt;">
+  <Class Name="TidyData.SnapshotLog.FileSnapshotLog&lt;T&gt;">
     <Position X="5.75" Y="7.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAQEAAAAAACAAAAAAAAABABAAAAAAAEAAAsAAIAAAIA=</HashCode>
-      <FileName>Storage\FileSnapshotLog.cs</FileName>
+      <FileName>SnapshotLog\FileSnapshotLog.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="TidyUtility.Data.Storage.ISnapshotLog&lt;T&gt;">
+  <Interface Name="TidyData.SnapshotLog.ISnapshotLog&lt;T&gt;">
     <Position X="0.5" Y="0.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAACAIAAAACAAAABAAAAAAAAAgAAgAIAAAIA=</HashCode>
-      <FileName>Storage\ISnapshotLog.cs</FileName>
+      <FileName>SnapshotLog\ISnapshotLog.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

@@ -1,27 +1,18 @@
 ﻿ #nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FluentAssertions;
-using NodaTime;
-using NodaTime.Testing;
-using NodaTime.Text;
-using NSubstitute;
-using TidyData;
-using TidyData.Msg.Notifications;
-using TidyData.SnapshotLog;
-using TidyData.Storage;
-using TidyData.Sync;
-using TidyMediator;
-using TidySyncDB.UnitTests.Helpers;
-using TidySyncDB.UnitTests.TestModel;
-using TidySyncDB.UnitTests.TestModel.Cmd;
-using TidyUtility.Data.Json;
-using Xunit;
-using Xunit.Abstractions;
+ using FluentAssertions;
+ using NodaTime;
+ using NodaTime.Testing;
+ using NSubstitute;
+ using TidyData.Msg.Notifications;
+ using TidyData.SnapshotLog;
+ using TidyData.Storage;
+ using TidyData.Sync;
+ using TidyData.Tests.Helpers;
+ using TidyData.Tests.TestModel;
+ using TidyMediator;
+ using TidyUtility.Data.Json;
 
-namespace TidySyncDB.UnitTests.Sync
+ namespace TidyData.Tests.Sync
 {
     public class SyncTests
     {

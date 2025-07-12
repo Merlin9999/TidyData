@@ -1,5 +1,5 @@
 ﻿ #nullable disable
- namespace TidyUtility.Tests
+ namespace TidyData.Tests
  {
      public static class TestFolders
      {

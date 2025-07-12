@@ -1,10 +1,7 @@
 ﻿ #nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using TidyData.Query;
+ using TidyData.Query;
 
-namespace TidySyncDB.UnitTests.TestModel.Qry
+ namespace TidyData.Tests.TestModel.Qry
 {
     public record DocGetAllQuery : GetAllQuery<TestDataModel, TestDocument>
     {

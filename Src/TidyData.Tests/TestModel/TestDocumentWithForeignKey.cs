@@ -1,8 +1,5 @@
 ﻿ #nullable disable
-using System;
-using TidyData;
-
-namespace TidySyncDB.UnitTests.TestModel
+  namespace TidyData.Tests.TestModel
 {
     public class TestDocumentWithForeignKey : IDBDocument
     {

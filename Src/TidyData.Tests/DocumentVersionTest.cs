@@ -1,10 +1,8 @@
 ﻿ #nullable disable
-using FluentAssertions;
-using TidyData;
-using TidyUtility.Data.Json;
-using Xunit;
+ using FluentAssertions;
+ using TidyUtility.Data.Json;
 
-namespace TidySyncDB.UnitTests
+ namespace TidyData.Tests
 {
     public class DocumentVersionTest
     {

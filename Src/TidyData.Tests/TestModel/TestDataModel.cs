@@ -1,12 +1,9 @@
 ﻿ #nullable disable
-using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using NodaTime;
-using TidyData;
-using TidyUtility.Data.Json;
+ using System.Collections.Immutable;
+ using NodaTime;
+ using TidyUtility.Data.Json;
 
-namespace TidySyncDB.UnitTests.TestModel
+ namespace TidyData.Tests.TestModel
 {
     [SafeToSerialize(IncludeNestedDerived = true)]
     public class TestDataModel : IDataModel

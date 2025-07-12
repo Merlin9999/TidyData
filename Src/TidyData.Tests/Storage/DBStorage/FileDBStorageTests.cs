@@ -1,15 +1,11 @@
 ﻿ #nullable disable
-using NodaTime;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using TidyData.SnapshotLog;
-using TidyData.Storage;
-using TidySyncDB.UnitTests.TestModel;
-using TidyUtility.Data.Json;
-using Xunit;
+ using NodaTime;
+ using TidyData.SnapshotLog;
+ using TidyData.Storage;
+ using TidyData.Tests.TestModel;
+ using TidyUtility.Data.Json;
 
-namespace TidySyncDB.UnitTests.Storage.DBStorage
+ namespace TidyData.Tests.Storage.DBStorage
 {
     public class FileDBStorageTests
     {

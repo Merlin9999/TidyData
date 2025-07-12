@@ -1,11 +1,9 @@
 ﻿ #nullable disable
-using System.Threading.Tasks;
-using NodaTime;
-using TidyData.Storage;
-using TidyUtility.Data.Json;
-using Xunit;
+ using NodaTime;
+ using TidyData.Storage;
+ using TidyUtility.Data.Json;
 
-namespace TidySyncDB.UnitTests.Storage.IndexLock
+ namespace TidyData.Tests.Storage.IndexLock
 {
     public class MemoryIndexLockTests
     {

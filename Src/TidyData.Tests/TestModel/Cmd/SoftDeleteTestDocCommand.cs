@@ -1,8 +1,5 @@
 ﻿ #nullable disable
-using System;
-using TidyData;
-
-namespace TidySyncDB.UnitTests.TestModel.Cmd
+  namespace TidyData.Tests.TestModel.Cmd
 {
     public class SoftDeleteTestDocCommand : ICommand<TestDataModel>
     {

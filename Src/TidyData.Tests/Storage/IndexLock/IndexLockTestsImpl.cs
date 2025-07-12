@@ -1,11 +1,8 @@
 ﻿ #nullable disable
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using FluentAssertions;
-using TidyData.Storage;
+ using FluentAssertions;
+ using TidyData.Storage;
 
-namespace TidySyncDB.UnitTests.Storage.IndexLock
+ namespace TidyData.Tests.Storage.IndexLock
 {
     public static class IndexLockTestsImpl
     {

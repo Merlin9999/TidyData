@@ -1,13 +1,7 @@
 ﻿ #nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
-using TidyData;
+ using FluentAssertions;
 
-namespace TidySyncDB.UnitTests.Helpers
+ namespace TidyData.Tests.Helpers
 {
     public static class SyncDBTestHelper
     {

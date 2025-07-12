@@ -1,16 +1,12 @@
  #nullable disable
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FluentAssertions;
-using NodaTime.Testing;
-using TidyData;
-using TidyData.Sync;
-using TidySyncDB.UnitTests.TestModel;
-using TidySyncDB.UnitTests.TestModel.Cmd;
-using TidySyncDB.UnitTests.TestModel.Qry;
+ using FluentAssertions;
+ using NodaTime.Testing;
+ using TidyData.Sync;
+ using TidyData.Tests.TestModel;
+ using TidyData.Tests.TestModel.Cmd;
+ using TidyData.Tests.TestModel.Qry;
 
-namespace TidySyncDB.UnitTests.Sync
+ namespace TidyData.Tests.Sync
 {
     //public record GetByIdTestDocumentQuery : GetByIdQuery<TestDocument> { }
 

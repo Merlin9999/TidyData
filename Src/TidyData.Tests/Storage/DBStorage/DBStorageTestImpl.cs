@@ -1,17 +1,13 @@
 ﻿ #nullable disable
-using FluentAssertions;
-using NodaTime;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using TidyData;
-using TidyData.Storage;
-using TidySyncDB.UnitTests.TestModel;
-using TidySyncDB.UnitTests.TestModel.Qry;
-using TidyUtility.Data.Json;
-using TidySyncDB.UnitTests.TestModel.Cmd;
+ using FluentAssertions;
+ using NodaTime;
+ using TidyData.Storage;
+ using TidyData.Tests.TestModel;
+ using TidyData.Tests.TestModel.Cmd;
+ using TidyData.Tests.TestModel.Qry;
+ using TidyUtility.Data.Json;
 
-namespace TidySyncDB.UnitTests.Storage.DBStorage
+ namespace TidyData.Tests.Storage.DBStorage
 {
     public static class DBStorageTestImpl
     {

@@ -1,67 +1,68 @@
 ﻿ #nullable disable
+using FluentAssertions;
+using NodaTime;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using FluentAssertions;
-using NodaTime;
-using TidySyncDB.Storage;
-using TidyTime.Core.DB.Cmd;
-using TidyTime.Core.DB.Qry;
-using TidyTime.Core.Dto;
-using TidyUtility.Serializer;
+using TidyData;
+using TidyData.Storage;
+using TidySyncDB.UnitTests.TestModel;
+using TidySyncDB.UnitTests.TestModel.Qry;
+using TidyUtility.Data.Json;
+using TidySyncDB.UnitTests.TestModel.Cmd;
 
 namespace TidySyncDB.UnitTests.Storage.DBStorage
 {
     public static class DBStorageTestImpl
     {
         public static async Task ReadTestImplAsync(
-            Func<string, int, Duration?, ISerializer, IClock, IDBStorage<ClientDataModel>> dbStorageFactoryFunc)
+            Func<string, int, Duration?, ISerializer, IClock, IDBStorage<TestDataModel>> dbStorageFactoryFunc)
         {
             int minSnapshotCountBeforeEligibleForDeletion = 2;
             Duration? maxSnapshotAgeToPreserveAll = Duration.FromMilliseconds(5000);
             var serializer = new SafeJsonDotNetSerializer();
 
-            IDBStorage<ClientDataModel> dbStorage = dbStorageFactoryFunc("ReadSnapshotLog",
+            IDBStorage<TestDataModel> dbStorage = dbStorageFactoryFunc("ReadSnapshotLog",
                 minSnapshotCountBeforeEligibleForDeletion, maxSnapshotAgeToPreserveAll,
                 serializer, SystemClock.Instance);
-            var db = new Database<ClientDataModel>(dbStorage);
+            var db = new Database<TestDataModel>(dbStorage);
 
             await db.DeleteDatabaseAsync();
 
-            List<ProjectDto> lists = await db.ExecuteAsync(new ProjectGetAllQuery());
+            List<TestDocument> list = await db.ExecuteAsync(new DocGetAllQuery());
 
-            lists.Should().HaveCount(0);
+            list.Should().HaveCount(0);
         }
 
         public static async Task ReadUpdateTestImplAsync(
-            Func<string, int, Duration?, ISerializer, IClock, IDBStorage<ClientDataModel>> dbStorageFactoryFunc)
+            Func<string, int, Duration?, ISerializer, IClock, IDBStorage<TestDataModel>> dbStorageFactoryFunc)
         {
             int minSnapshotCountBeforeEligibleForDeletion = 2;
             Duration? maxSnapshotAgeToPreserveAll = Duration.FromMilliseconds(5000);
             var serializer = new SafeJsonDotNetSerializer();
 
-            IDBStorage<ClientDataModel> dbStorage = dbStorageFactoryFunc("ReadUpdateSnapshotLog",
+            IDBStorage<TestDataModel> dbStorage = dbStorageFactoryFunc("ReadUpdateSnapshotLog",
                 minSnapshotCountBeforeEligibleForDeletion, maxSnapshotAgeToPreserveAll,
                 serializer, SystemClock.Instance);
 
-            var db = new Database<ClientDataModel>(dbStorage);
+            var db = new Database<TestDataModel>(dbStorage);
 
             await db.DeleteDatabaseAsync();
 
-            var getAllQuery = new ProjectGetAllQuery();
-            var dto = new ProjectDto() { Name = "World Peace" };
-            var insertCommand = new InsertCommand<ProjectDto>() {ToInsert = dto};
+            var getAllQuery = new DocGetAllQuery();
+            var dto = new TestDocument() { Desc = "World Peace" };
+            var insertCommand = new InsertTestDocCommand(dto);
 
-            List<ProjectDto> beforeCommand = await db.ExecuteAsync(getAllQuery);
+            List<TestDocument> beforeCommand = await db.ExecuteAsync(getAllQuery);
             await db.ExecuteAsync(insertCommand);
-            List<ProjectDto> afterCommand = await db.ExecuteAsync(getAllQuery);
+            List<TestDocument> afterCommand = await db.ExecuteAsync(getAllQuery);
 
             beforeCommand.Should().HaveCount(0);
             afterCommand.Should().HaveCount(1);
         }
 
         public static async Task ReadUpdateFailsWhenAlreadyLockedImplAsync(bool startWithExistingInitialStorage,
-            Func<string, int, Duration?, ISerializer, IClock, IDBStorage<ClientDataModel>> dbStorageFactoryFunc)
+            Func<string, int, Duration?, ISerializer, IClock, IDBStorage<TestDataModel>> dbStorageFactoryFunc)
         {
             int minSnapshotCountBeforeEligibleForDeletion = 2;
             Duration? maxSnapshotAgeToPreserveAll = Duration.FromMilliseconds(5000);
@@ -70,21 +71,21 @@ namespace TidySyncDB.UnitTests.Storage.DBStorage
             string snapshotLogName = "OverlappingReadUpdateSnapshotLog" +
                 (startWithExistingInitialStorage ? "WithInitialStorage" : "WithNoInitialStorage");
 
-            IDBStorage<ClientDataModel> dbStorage = dbStorageFactoryFunc(snapshotLogName,
+            IDBStorage<TestDataModel> dbStorage = dbStorageFactoryFunc(snapshotLogName,
                 minSnapshotCountBeforeEligibleForDeletion, maxSnapshotAgeToPreserveAll,
                 serializer, SystemClock.Instance);
 
-            var db = new Database<ClientDataModel>(dbStorage);
+            var db = new Database<TestDataModel>(dbStorage);
             await db.DeleteDatabaseAsync();
 
             if (startWithExistingInitialStorage)
                 await db.ExecuteAsync(new NullCommand());
 
-            IDBStorage<ClientDataModel> dbStorageToBeNested = dbStorageFactoryFunc(snapshotLogName,
+            IDBStorage<TestDataModel> dbStorageToBeNested = dbStorageFactoryFunc(snapshotLogName,
                 minSnapshotCountBeforeEligibleForDeletion, maxSnapshotAgeToPreserveAll,
                 serializer, SystemClock.Instance);
 
-            var dbToBeNested = new Database<ClientDataModel>(dbStorageToBeNested);
+            var dbToBeNested = new Database<TestDataModel>(dbStorageToBeNested);
             var commandWithNestedDatabase = new NestedDatabaseTestCommand(dbToBeNested);
             
             Func<Task> func = async () => await db.ExecuteAsync(commandWithNestedDatabase);
@@ -93,25 +94,25 @@ namespace TidySyncDB.UnitTests.Storage.DBStorage
         }
     }
 
-    public class NullCommand : ICommand<ClientDataModel>
+    public class NullCommand : ICommand<TestDataModel>
     {
-        public void Execute(ClientDataModel model, CollectionWrapperFactory factory)
+        public void Execute(TestDataModel model, CollectionWrapperFactory factory)
         {
             // Do Nothing.
         }
     }
 
 
-    public class NestedDatabaseTestCommand : ICommand<ClientDataModel>
+    public class NestedDatabaseTestCommand : ICommand<TestDataModel>
     {
-        private readonly Database<ClientDataModel> _nestedDatabase;
+        private readonly Database<TestDataModel> _nestedDatabase;
 
-        public NestedDatabaseTestCommand(Database<ClientDataModel> nextedDatabase)
+        public NestedDatabaseTestCommand(Database<TestDataModel> nextedDatabase)
         {
             this._nestedDatabase = nextedDatabase;
         }
 
-        public void Execute(ClientDataModel model, CollectionWrapperFactory factory)
+        public void Execute(TestDataModel model, CollectionWrapperFactory factory)
         {
             // This will read the file and write the file back out.
             // Another write based on the previous read MUST FAIL concurrency.

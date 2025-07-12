@@ -2,8 +2,8 @@
 using System.IO;
 using System.Threading.Tasks;
 using NodaTime;
-using TidySyncDB.Storage;
-using TidyUtility.Serializer;
+using TidyData.Storage;
+using TidyUtility.Data.Json;
 using Xunit;
 
 namespace TidySyncDB.UnitTests.Storage.IndexLock

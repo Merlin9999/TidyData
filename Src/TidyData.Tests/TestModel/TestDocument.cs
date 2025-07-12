@@ -2,6 +2,7 @@
 using System;
 using Dynamitey;
 using Newtonsoft.Json;
+using TidyData;
 
 namespace TidySyncDB.UnitTests.TestModel
 {

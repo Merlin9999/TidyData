@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
-using TidySyncDB.Storage;
+using TidyData.Storage;
 
 namespace TidySyncDB.UnitTests.Storage.IndexLock
 {

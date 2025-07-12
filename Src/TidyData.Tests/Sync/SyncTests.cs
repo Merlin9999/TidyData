@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using MediatR;
 using NodaTime;
 using NodaTime.Testing;
 using NodaTime.Text;
 using NSubstitute;
-using TidySyncDB.Msg.Notifications;
-using TidySyncDB.Storage;
-using TidySyncDB.Sync;
+using TidyData;
+using TidyData.Msg.Notifications;
+using TidyData.SnapshotLog;
+using TidyData.Storage;
+using TidyData.Sync;
+using TidyMediator;
 using TidySyncDB.UnitTests.Helpers;
 using TidySyncDB.UnitTests.TestModel;
 using TidySyncDB.UnitTests.TestModel.Cmd;
-using TidyUtility.Serializer;
-using TidyUtility.Storage;
+using TidyUtility.Data.Json;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -100,12 +101,12 @@ namespace TidySyncDB.UnitTests.Sync
             ClientDBInfo device1 = await this.CreateClientDeviceDBAsync("Client1CacheTest", accountId, true, server.ServerSyncClient,
                 mediatorSubstituteConfigurator: mediator =>
                 {
-                    mediator.Publish(Arg.Do<DBSyncComplete.Event>(ev => device1SyncCompleteNotifications.Add(ev)));
+                    mediator.PublishAsync(Arg.Do<DBSyncComplete.Event>(ev => device1SyncCompleteNotifications.Add(ev)));
                 });
             ClientDBInfo device2 = await this.CreateClientDeviceDBAsync("Client2CacheTest", accountId, true, server.ServerSyncClient,
                 mediatorSubstituteConfigurator: mediator =>
                 {
-                    mediator.Publish(Arg.Do<DBSyncComplete.Event>(ev => device2SyncCompleteNotifications.Add(ev)));
+                    mediator.PublishAsync(Arg.Do<DBSyncComplete.Event>(ev => device2SyncCompleteNotifications.Add(ev)));
                 });
 
             await SyncTestsImpl.MainScenariosAsync(device1.DB, device1.SyncExecutor, device2.DB, device2.SyncExecutor, server.DB);

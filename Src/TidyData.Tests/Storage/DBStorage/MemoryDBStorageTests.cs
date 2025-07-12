@@ -1,13 +1,13 @@
 ﻿ #nullable disable
+using NodaTime;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using NodaTime;
-using TidySyncDB.Storage;
-using TidyTime.Core.Dto;
-using TidyUtility.Serializer;
-using TidyUtility.Storage;
+using TidyData.SnapshotLog;
+using TidyData.Storage;
+using TidySyncDB.UnitTests.TestModel;
+using TidyUtility.Data.Json;
 using Xunit;
 
 namespace TidySyncDB.UnitTests.Storage.DBStorage
@@ -38,7 +38,7 @@ namespace TidySyncDB.UnitTests.Storage.DBStorage
             await DBStorageTestImpl.ReadUpdateFailsWhenAlreadyLockedImplAsync(true, this.DBStorageFactoryMethod);
         }
 
-        private IDBStorage<ClientDataModel> DBStorageFactoryMethod(string snapshotLogName,
+        private IDBStorage<TestDataModel> DBStorageFactoryMethod(string snapshotLogName,
             int minSnapshotCountBeforeEligibleForDeletion, Duration? maxSnapshotAgeToPreserveAll,
             ISerializer serializer, IClock clock)
         {
@@ -48,7 +48,7 @@ namespace TidySyncDB.UnitTests.Storage.DBStorage
                 MinSnapshotCountBeforeEligibleForDeletion = minSnapshotCountBeforeEligibleForDeletion,
                 MaxSnapshotAgeToPreserveAll = maxSnapshotAgeToPreserveAll ?? Duration.Zero,
             };
-            return new MemoryDBStorage<ClientDataModel>(snapshotLogSettings, serializer, clock);
+            return new MemoryDBStorage<TestDataModel>(snapshotLogSettings, serializer, clock);
         }
     }
 }

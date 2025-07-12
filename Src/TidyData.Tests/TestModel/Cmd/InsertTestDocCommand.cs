@@ -1,6 +1,7 @@
 ﻿ #nullable disable
 using System;
 using System.Collections.Generic;
+using TidyData;
 
 namespace TidySyncDB.UnitTests.TestModel.Cmd
 {

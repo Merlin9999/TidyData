@@ -1,5 +1,7 @@
 ﻿ #nullable disable
-namespace TidySyncDB.UnitTests.TestModel.Cmd
+ using TidyData;
+
+ namespace TidySyncDB.UnitTests.TestModel.Cmd
 {
     public class InsertTestDocWithRefCommand : ICommand<TestDataModel>
     {

@@ -4,6 +4,7 @@ using FluentAssertions;
 using NodaTime;
 using NodaTime.Testing;
 using TidyData.SnapshotLog;
+using TidyData.Tests._Shared_Synced;
 using TidyData.Tests.Azure;
 using TidyData.Tests.SnapshotLog;
 using TidyUtility.Azure;

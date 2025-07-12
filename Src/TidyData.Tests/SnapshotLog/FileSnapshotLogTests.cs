@@ -2,6 +2,7 @@
  using NodaTime;
  using NodaTime.Testing;
  using TidyData.SnapshotLog;
+ using TidyData.Tests._Shared_Synced;
 
  namespace TidyData.Tests.SnapshotLog
 {

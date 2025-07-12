@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TidySyncDB.Database&lt;TDataModel&gt;">
+    <Position X="1.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQABAAAAAAAAACEAhAAAAAAAAAAAQAAAAAAAAAAAAEQ=</HashCode>
+      <FileName>Database.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dbStorage" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TidySyncDB.Sync.DBServerSyncCommand&lt;TServerDataModel&gt;">
+    <Position X="5.25" Y="3.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEiAgAAAAAAAAIAAAAAAAADAAAAAAAAAAAAAAAAUA=</HashCode>
+      <FileName>Sync\DBServerSyncCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TidySyncDB.Sync.SyncChangeSet">
+    <Position X="10" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAgAAAAAAAAAAAAAAAQCAAAAAAAg=</HashCode>
+      <FileName>Sync\SyncChangeSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TidySyncDB.Sync.CollectionChangeSet">
+    <Position X="10" Y="11" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sync\SyncChangeSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TidySyncDB.Sync.LocalDBServerClientSync&lt;TServerDataModel&gt;" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="9.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIgABAACAAAAQAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sync\LocalDBServerClientSync.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TidySyncDB.Storage.DBStorageBase&lt;T&gt;">
+    <Position X="9.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAgAAAIAAAAAAABAABQAEAAAAAAgA=</HashCode>
+      <FileName>Storage\DBStorageBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TidySyncDB.Storage.MemoryDBStorage&lt;T&gt;">
+    <Position X="11" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAABAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Storage\MemoryDBStorage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TidySyncDB.Storage.FileDBStorage&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAIAAAAAAABAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Storage\FileDBStorage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TidySyncDB.Storage.FileIndexLock">
+    <Position X="4.25" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAAAAAAAAAAAASAAAQAAAIAEAAIA=</HashCode>
+      <FileName>Storage\FileIndexLock.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TidySyncDB.Storage.MemoryIndexLock">
+    <Position X="7.25" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAIAAAAAACAAAACAIAAAAAAAAASAAAQAAAAAAAAIA=</HashCode>
+      <FileName>Storage\MemoryIndexLock.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TidySyncDB.Storage.DBStorageIndex">
+    <Position X="17" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Storage\DBStorageIndex.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TidySyncDB.Storage.DBStorageIndexExtensions">
+    <Position X="16.75" Y="6.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Storage\DBStorageIndex.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TidySyncDB.Storage.StorageConcurrencyException">
+    <Position X="21.75" Y="2" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Storage\StorageConcurrencyException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TidySyncDB.DatabaseException">
+    <Position X="21.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DatabaseException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TidySyncDB.DocumentMetaData" BaseTypeListCollapsed="true">
+    <Position X="23" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAEgAAAAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>DocumentMetaData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TidySyncDB.DocumentMetaDataExtensions">
+    <Position X="23" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>DocumentMetaData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TidySyncDB.DocumentVersion" BaseTypeListCollapsed="true">
+    <Position X="20.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAQAgACAAgAAAAAAAIAAAAAAAAAAByA=</HashCode>
+      <FileName>DocumentVersion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TidySyncDB.DocumentVersionExtensions">
+    <Position X="20.5" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DocumentVersion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TidySyncDB.CollectionWrapper&lt;TDocument&gt;">
+    <Position X="12" Y="6.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>BIQAUEAABAAAAEAIAAAIAAQAARAAWQIANgBAAJAQAIA=</HashCode>
+      <FileName>CollectionWrapper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TidySyncDB.Sync.DBClientSyncApplyServerChangesCommand&lt;TClientDataModel&gt;">
+    <Position X="0.5" Y="4.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAwAAAAAAAAABAAAAAAAAQAAAAABAAA=</HashCode>
+      <FileName>Sync\DBClientSyncApplyServerChangesCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="TidySyncDB.IDBDocument">
+    <Position X="19.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDBDocument.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.Sync.IDBClientSync">
+    <Position X="1.5" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAABAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sync\IDBClientSync.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.Storage.IDBStorage&lt;T&gt;">
+    <Position X="5.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAABQAAAAAAAAAA=</HashCode>
+      <FileName>Storage\IDBStorage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.Storage.IIndexLock">
+    <Position X="5.75" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Storage\IIndexLock.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.IDataModel">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>IDataModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.IClientDataModel">
+    <Position X="17.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>IDataModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.ICommand&lt;TDataModel&gt;">
+    <Position X="22.5" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.IAsyncCommand&lt;TDataModel&gt;">
+    <Position X="23.75" Y="11" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>ICommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.ICommandAndQuery&lt;TDataModel, TResult&gt;">
+    <Position X="18.5" Y="9.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICommandAndQuery.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.IAsyncCommandAndQuery&lt;TDataModel, TResult&gt;">
+    <Position X="16.75" Y="11" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>ICommandAndQuery.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.IQuery&lt;TDataModel, TResult&gt;">
+    <Position X="15.75" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IQuery.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.IAsyncQuery&lt;TDataModel, TResult&gt;">
+    <Position X="20.75" Y="11" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>IQuery.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.IQuery&lt;TDataModel&gt;">
+    <Position X="18" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IQuery.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TidySyncDB.ICollectionWrapper">
+    <Position X="13.5" Y="4.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAABAAAAAAAAAAAAAAAABAAEAAABAAAAAAAAAA=</HashCode>
+      <FileName>ICollectionWrapper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

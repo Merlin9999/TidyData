@@ -9,7 +9,7 @@ public static class TestFolders
     private static string _repoFolder;
     private static string _azuriteFolder;
 
-    public static string AzuriteFolder => _azuriteFolder ??= Path.Combine(RepoFolder, "Azurite");
+    public static string AzuriteFolder => _azuriteFolder ??= Path.Combine(RepoFolder, ".Azurite");
 
     public static string RepoFolder => _repoFolder ??= GetRepoFolder();
 

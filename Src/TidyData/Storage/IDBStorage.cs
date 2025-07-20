@@ -10,7 +10,7 @@
         /// <returns></returns>
         Task<T> ReadOnlyReadAsync();
         Task<T> ReadAndLockAsync();
-        Task UpdateAndReleaseLockAsync(T db);
+        Task UpdateAndReleaseLockAsync(T dataModel);
         Task ReleaseLockAsync();
     }
 }

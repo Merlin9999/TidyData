@@ -40,13 +40,13 @@
             return await this.SnapshotLog.LoadLastSavedSnapshotAsync();
         }
 
-        public async Task UpdateAndReleaseLockAsync(T db)
+        public async Task UpdateAndReleaseLockAsync(T dataModel)
         {
             if (this.Index == null)
                 throw new InvalidOperationException($"Must call the {nameof(this.ReadAndLockAsync)}() method " +
                     $"before calling {nameof(this.UpdateAndReleaseLockAsync)}().");
 
-            string newSnapshotName = await this.SnapshotLog.SaveSnapshotAsync(db);
+            string newSnapshotName = await this.SnapshotLog.SaveSnapshotAsync(dataModel);
 
             IEnumerable<string> snapshotsThatExist = await this.SnapshotLog.GetSavedSnapshotNamesAsync();
             var newLog = this.Index.DBSnapshotNameLog.Add(newSnapshotName).Intersect(snapshotsThatExist);

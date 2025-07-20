@@ -4,7 +4,7 @@
  using TidyData.Tests._Shared_Synced.TestImpl;
  using TidyUtility.Data.Json;
 
- namespace TidyData.Tests.Storage.IndexLock
+ namespace TidyData.Tests.Storage
 {
     public class MemoryIndexLockTests
     {

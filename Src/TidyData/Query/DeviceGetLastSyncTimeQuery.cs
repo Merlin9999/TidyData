@@ -4,7 +4,7 @@
 
  namespace TidyData.Query
 {
-    public class DeviceGetLastSyncTimeQuery<TServerDataModel> : IQuery<TServerDataModel, Instant>
+    public record DeviceGetLastSyncTimeQuery<TServerDataModel> : IQuery<TServerDataModel, Instant>
         where TServerDataModel : IServerDataModel
     {
         private readonly Guid _deviceId;

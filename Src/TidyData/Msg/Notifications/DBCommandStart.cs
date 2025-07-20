@@ -5,12 +5,12 @@
 {
     public static class DBCommandStart
     {
-        public class Event : INotification
+        public record Event : INotification
         {
-            public Guid CommandId { get; set; }
-            public Guid AccountId { get; set; }
-            public bool IsClientSyncCommand { get; set; }
-            public Type CommandType { get; set; }
+            public Guid CommandId { get; init; }
+            public Guid AccountId { get; init; }
+            public bool IsClientSyncCommand { get; init; }
+            public Type CommandType { get; init; }
         }
     }
 }

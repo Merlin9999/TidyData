@@ -8,9 +8,9 @@
 
  namespace TidyData
 {
-    public class DBMetaData
+    public record DBMetaData
     {
-        public Guid AccountId { get; set; }
+        public Guid AccountId { get; init; }
     }
 
     public class Database<TDataModel> : IDatabase<TDataModel>
@@ -170,7 +170,7 @@
         {
             IDBStorage<TDataModel> dbStorage = this._dbStorage;
             if (dbStorage is CacheDBStorageAdapter<TDataModel>)
-                dbStorage = ((CacheDBStorageAdapter<TDataModel>) this._dbStorage)._storageImpl;
+                dbStorage = ((CacheDBStorageAdapter<TDataModel>) this._dbStorage).StorageImpl;
             await ((DBStorageBase<TDataModel>) dbStorage).DeleteDatabaseAsync();
         }
 

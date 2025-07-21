@@ -10,6 +10,9 @@
     {
         public FileDBStorage(SnapshotLogSettings settings, string pathToSnapshotLogFolder, ISerializer serializer, IClock clock = null)
         {
+            if (string.IsNullOrWhiteSpace(settings.SnapshotLogName))
+                throw new ArgumentException($"{nameof(SnapshotLogSettings)}.{nameof(settings.SnapshotLogName)} must not be null or empty!", nameof(settings.SnapshotLogName));
+
             this.Clock = clock ?? SystemClock.Instance;
             this.SnapshotLog = new FileSnapshotLog<T>(settings, pathToSnapshotLogFolder, serializer, clock);
             string indexLockFileName = Path.Combine(pathToSnapshotLogFolder, this.BuildIndexLogFileName());

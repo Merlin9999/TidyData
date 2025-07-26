@@ -6,7 +6,7 @@
  namespace TidyData.Sync
 {
     public class DBServerSyncCommand<TServerDataModel> : IAsyncCommandAndQuery<TServerDataModel, SyncChangeSet>
-        where TServerDataModel : IServerDataModel, new()
+        where TServerDataModel : ISyncServerDataModel, new()
     {
         private readonly SyncChangeSet _clientSyncChangeSet;
         private readonly DBSyncAlgorithmSettings _dbSyncAlgorithmSettings;

@@ -10,12 +10,12 @@
         IEnumerable<IForeignKeyDefinition> GetForeignKeyDefinitions();
     }
 
-    public interface IClientDataModel : IDataModel
+    public interface ISyncClientDataModel : IDataModel
     {
         Instant? LastSync { get; set; }
     }
 
-    public interface IServerDataModel : IDataModel
+    public interface ISyncServerDataModel : IDataModel
     {
         ImmutableDictionary<Guid, DeviceInformation> RemoteDeviceLookup { get; set; }
     }

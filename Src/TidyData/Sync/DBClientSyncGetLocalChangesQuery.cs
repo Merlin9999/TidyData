@@ -4,7 +4,7 @@
  namespace TidyData.Sync
 {
     public class DBClientSyncGetLocalChangesQuery<TClientDataModel> : IQuery<TClientDataModel, SyncChangeSet>
-        where TClientDataModel : IClientDataModel, new()
+        where TClientDataModel : ISyncClientDataModel, new()
     {
         private readonly Instant _lastDeviceSyncTimeFromServer;
         private readonly Guid _accountId;

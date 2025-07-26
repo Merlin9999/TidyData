@@ -15,7 +15,7 @@
     /// </summary>
     /// <typeparam name="TServerDataModel"></typeparam>
     public class LocalDBServerClientSync<TServerDataModel> : IDBClientSync
-        where TServerDataModel : class, IServerDataModel, new()
+        where TServerDataModel : class, ISyncServerDataModel, new()
     {
         private readonly Database<TServerDataModel> _serverDatabase;
         private readonly Func<SyncChangeSet, DBServerSyncCommand<TServerDataModel>> _dbSyncServerCommandFactoryFunc;
@@ -55,7 +55,7 @@
             // Serialize and deserialize the request and response to simulate what would happen to the data with communication
             // over HTTPS. This makes for a better test of the system. Also allows the client and the server data model to
             // vary as long as they remain compatible. To remain compatible, they must have the same collections (related by
-            // inheritance), the server must derive from IDataModel, and the client must also deriving from IClientDataModel.
+            // inheritance), the server must derive from IDataModel, and the client must also deriving from ISyncClientDataModel.
 
             string serializedRequest = this._serializer.Serialize(request);
             SynchronizeRequest deserializedRequest = this._serializer.Deserialize<SynchronizeRequest>(serializedRequest);

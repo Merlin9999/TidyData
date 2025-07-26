@@ -4,7 +4,7 @@
  namespace TidyData.Sync
 {
     public class DBClientSyncApplyServerChangesCommand<TClientDataModel> : ICommand<TClientDataModel>, IClientSyncCommand
-        where TClientDataModel : IClientDataModel, new()
+        where TClientDataModel : ISyncClientDataModel, new()
     {
         private readonly SyncChangeSet _serverChangeSet;
         private readonly Instant _syncStart;

@@ -5,7 +5,7 @@ namespace TidyData;
 public interface IDBLocalCleanupExecutorFactory<TDataModel>
     where TDataModel : IDataModel, new()
 {
-    Task<IDBLocalCleanupExecutor> CreateAsync();
+    Task<IDBLocalCleanupExecutor> GetExecutor();
 }
 
 public class DBLocalCleanupExecutorFactory<TDataModel> : IDBLocalCleanupExecutorFactory<TDataModel>
@@ -21,9 +21,9 @@ public class DBLocalCleanupExecutorFactory<TDataModel> : IDBLocalCleanupExecutor
         _clock = clock;
     }
 
-    public async Task<IDBLocalCleanupExecutor> CreateAsync()
+    public async Task<IDBLocalCleanupExecutor> GetExecutor()
     {
-        IDatabase<TDataModel> db = await _dbFactory.CreateAsync();
+        IDatabase<TDataModel> db = await _dbFactory.GetDatabaseAsync();
         return new DBLocalCleanupExecutor<TDataModel>(db, _dbLocalAlgSettings, _clock);
     }
 }

@@ -1,10 +1,9 @@
 ﻿ #nullable disable
- using NodaTime;
+ using TidyData.Maint;
 
  namespace TidyData.Sync
 {
-    public record DBSyncAlgorithmSettings
+    public record DBSyncAlgorithmSettings : DBLocalAlgorithmSettingsBase
     {
-        public Duration MinAgeToDeleteSoftDeletedDocs { get; init; }
     }
 }

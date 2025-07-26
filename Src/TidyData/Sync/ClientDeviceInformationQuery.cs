@@ -4,7 +4,7 @@
  namespace TidyData.Sync
 {
     public class ClientDeviceInformationQuery<TServerDataModel> : IAsyncQuery<TServerDataModel, ImmutableList<DeviceInformation>>
-        where TServerDataModel : IServerDataModel, new()
+        where TServerDataModel : ISyncServerDataModel, new()
     {
         public Task<ImmutableList<DeviceInformation>> ExecuteAsync(TServerDataModel model, CollectionWrapperFactory factory)
         {

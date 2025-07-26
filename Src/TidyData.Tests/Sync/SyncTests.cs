@@ -153,17 +153,17 @@
 
         private async Task<ServerDBInfo> CreateServerDBAsync(string snapshotLogName, DBSyncAlgorithmSettings dbSyncAlgorithmSettings = null, IClock clock = null)
         {
-            IDBStorage<ServerTestDataModel> dbStorage = new MemoryDBStorage<ServerTestDataModel>(new SnapshotLogSettings()
+            IDBStorage<SyncServerTestDataModel> dbStorage = new MemoryDBStorage<SyncServerTestDataModel>(new SnapshotLogSettings()
             {
                 SnapshotLogName = snapshotLogName,
                 MinSnapshotCountBeforeEligibleForDeletion = 2,
                 MaxSnapshotAgeToPreserveAll = Duration.FromMilliseconds(50),
             }, this._serializer);
-            var db = new Database<ServerTestDataModel>(dbStorage, clock: clock);
+            var db = new Database<SyncServerTestDataModel>(dbStorage, clock: clock);
             await db.DeleteDatabaseAsync();
 
-            var serverSyncClient = new LocalDBServerClientSync<ServerTestDataModel>(db,
-                clientChangeSet => new DBServerSyncCommand<ServerTestDataModel>(clientChangeSet, dbSyncAlgorithmSettings ?? DBSyncAlgorithmSettings));
+            var serverSyncClient = new LocalDBServerClientSync<SyncServerTestDataModel>(db,
+                clientChangeSet => new DBServerSyncCommand<SyncServerTestDataModel>(clientChangeSet, dbSyncAlgorithmSettings ?? DBSyncAlgorithmSettings));
 
             return new ServerDBInfo()
             {
@@ -173,28 +173,28 @@
         }
 
         private async Task<ClientDBInfo> CreateClientDeviceDBAsync(string snapshotLogName, Guid accountId, bool supportQueryCaching,
-            LocalDBServerClientSync<ServerTestDataModel> serverSyncClient, DBSyncAlgorithmSettings dbSyncAlgorithmSettings = null, IClock clock = null, 
+            LocalDBServerClientSync<SyncServerTestDataModel> serverSyncClient, DBSyncAlgorithmSettings dbSyncAlgorithmSettings = null, IClock clock = null, 
             Action<IMediator> mediatorSubstituteConfigurator = null)
         {
             IMediator mediator = Substitute.For<IMediator>();
             if (mediatorSubstituteConfigurator != null)
                 mediatorSubstituteConfigurator(mediator);
 
-            IDBStorage<ClientTestDataModel> dbStorage = new MemoryDBStorage<ClientTestDataModel>(new SnapshotLogSettings()
+            IDBStorage<SyncClientTestDataModel> dbStorage = new MemoryDBStorage<SyncClientTestDataModel>(new SnapshotLogSettings()
             {
                 SnapshotLogName = snapshotLogName,
                 MinSnapshotCountBeforeEligibleForDeletion = 2,
                 MaxSnapshotAgeToPreserveAll = Duration.FromMilliseconds(50),
             }, this._serializer);
             if (supportQueryCaching)
-                dbStorage = new CacheDBStorageAdapter<ClientTestDataModel>(dbStorage);
+                dbStorage = new CacheDBStorageAdapter<SyncClientTestDataModel>(dbStorage);
 
-            var db = new Database<ClientTestDataModel>(dbStorage, clock: clock);
+            var db = new Database<SyncClientTestDataModel>(dbStorage, clock: clock);
             await db.DeleteDatabaseAsync();
 
             Guid deviceId = Guid.NewGuid();
             string deviceName = "Client Device";
-            var syncExecutor = new DBClientSyncExecutor<ClientTestDataModel>(db, serverSyncClient, accountId, deviceId, deviceName, 
+            var syncExecutor = new DBClientSyncExecutor<SyncClientTestDataModel>(db, serverSyncClient, accountId, deviceId, deviceName, 
                 dbSyncAlgorithmSettings ?? DBSyncAlgorithmSettings, mediator);
 
             return new ClientDBInfo()
@@ -208,14 +208,14 @@
 
     public class ServerDBInfo
     {
-        public Database<ServerTestDataModel> DB { get; set; }
-        public LocalDBServerClientSync<ServerTestDataModel> ServerSyncClient { get; set; }
+        public Database<SyncServerTestDataModel> DB { get; set; }
+        public LocalDBServerClientSync<SyncServerTestDataModel> ServerSyncClient { get; set; }
     }
 
     public class ClientDBInfo
     {
         public Guid DeviceId { get; set; }
-        public Database<ClientTestDataModel> DB { get; set; }
-        public DBClientSyncExecutor<ClientTestDataModel> SyncExecutor { get; set; }
+        public Database<SyncClientTestDataModel> DB { get; set; }
+        public DBClientSyncExecutor<SyncClientTestDataModel> SyncExecutor { get; set; }
     }
 }

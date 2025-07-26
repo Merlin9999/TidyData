@@ -2,7 +2,7 @@
   namespace TidyData.Sync;
 
 public class ClientDeviceDeleteCommand<TServerDataModel> : IAsyncCommand<TServerDataModel>
-    where TServerDataModel : IServerDataModel, new()
+    where TServerDataModel : ISyncServerDataModel, new()
 {
     private readonly Guid _remoteDeviceIdToDelete;
 

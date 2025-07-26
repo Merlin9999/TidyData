@@ -1,17 +1,17 @@
 ﻿ #nullable disable
- using System.Reflection;
  using Polly;
  using Polly.Retry;
+ using System.Reflection;
+ using TidyData.Maint;
  using TidyData.Msg.Notifications;
  using TidyMediator;
  using TidyUtility.Core.Extensions;
 
  namespace TidyData.Sync
 {
-    public interface IDBClientSyncExecutor
+    public interface IDBClientSyncExecutor : IDBLocalCleanupExecutor
     {
         bool ForceMaintCleanup { get; set; }
-        Task ExecuteAsync();
         IDBSyncServiceAPI GetSyncServiceAPI();
     }
 
@@ -23,7 +23,7 @@
     }
 
     public class DBClientSyncExecutor<TClientDataModel> : DBClientSyncExecutor, IDBClientSyncExecutor
-        where TClientDataModel : IClientDataModel, new()
+        where TClientDataModel : ISyncClientDataModel, new()
     {
         private static volatile AssemblyVersionInfo _assemblyVersionInfoCache;
 

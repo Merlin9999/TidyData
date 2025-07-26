@@ -13,9 +13,9 @@
     public static class SyncTestsImpl
     {
         public static async Task MainScenariosAsync(
-            Database<ClientTestDataModel> device1DB, DBClientSyncExecutor<ClientTestDataModel> device1SyncExecutor,
-            Database<ClientTestDataModel> device2DB, DBClientSyncExecutor<ClientTestDataModel> device2SyncExecutor,
-            Database<ServerTestDataModel> serverDB)
+            Database<SyncClientTestDataModel> device1DB, DBClientSyncExecutor<SyncClientTestDataModel> device1SyncExecutor,
+            Database<SyncClientTestDataModel> device2DB, DBClientSyncExecutor<SyncClientTestDataModel> device2SyncExecutor,
+            Database<SyncServerTestDataModel> serverDB)
         {
             //Scenario 1
 
@@ -137,8 +137,8 @@
         }
 
         public static async Task SoftDeletedDocumentAreInsertedOnSyncAsync(
-            Database<ClientTestDataModel> deviceDB, DBClientSyncExecutor<ClientTestDataModel> deviceSyncExecutor, 
-            Database<ServerTestDataModel> serverDB)
+            Database<SyncClientTestDataModel> deviceDB, DBClientSyncExecutor<SyncClientTestDataModel> deviceSyncExecutor, 
+            Database<SyncServerTestDataModel> serverDB)
         {
             var doc01 = new TestDocument() { Desc = "Doc 01" };
             var doc02 = new TestDocument() { Desc = "Doc 02" };
@@ -168,8 +168,8 @@
         }
 
         public static async Task PhysicalDeletionOfSoftDeletedWithAgeOlderThanConfigured(
-            Database<ClientTestDataModel> deviceDB, DBClientSyncExecutor<ClientTestDataModel> deviceSyncExecutor,
-            Database<ServerTestDataModel> serverDB, FakeClock clock)
+            Database<SyncClientTestDataModel> deviceDB, DBClientSyncExecutor<SyncClientTestDataModel> deviceSyncExecutor,
+            Database<SyncServerTestDataModel> serverDB, FakeClock clock)
         {
             var doc01 = new TestDocument() { Desc = "Doc 01" };
             var doc02 = new TestDocument() { Desc = "Doc 02" };
@@ -215,8 +215,8 @@
         }
 
         public static async Task PhysicalDeletionStoppedIfSoftDeletedDocReferencedByForeignKey(
-            Database<ClientTestDataModel> deviceDB, DBClientSyncExecutor<ClientTestDataModel> deviceSyncExecutor,
-            Database<ServerTestDataModel> serverDB, FakeClock clock)
+            Database<SyncClientTestDataModel> deviceDB, DBClientSyncExecutor<SyncClientTestDataModel> deviceSyncExecutor,
+            Database<SyncServerTestDataModel> serverDB, FakeClock clock)
         {
             var doc01 = new TestDocument() { Desc = "Doc 01" };
             var doc02 = new TestDocument() { Desc = "Doc 02" };

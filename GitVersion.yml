@@ -19,19 +19,19 @@ branches:
   hotfix:
     regex: ^hotfix[/-]
     label: hotfix
-    increment: none
+    increment: patch
     is-release-branch: true
 
   develop:
     regex: ^develop$
     label: alpha
-    increment: minor
+    increment: patch
     is-release-branch: false
 
   feature:
     regex: ^feature[/-]
     label: alpha
-    increment: minor
+    increment: patch
     is-release-branch: false
     track-merge-target: false
     track-merge-message: false
@@ -40,7 +40,7 @@ branches:
   default:
     regex: .*
     label: alpha
-    increment: minor
+    increment: patch
     is-release-branch: false
 
 ignore:

@@ -114,7 +114,10 @@ class Build : NukeBuild
             Log.Information($"                PreReleaseLabel: {GitVersion.PreReleaseLabel}");
             Log.Information($"               PreReleaseNumber: {GitVersion.PreReleaseNumber}");
             Log.Information($"       WeightedPreReleaseNumber: {GitVersion.WeightedPreReleaseNumber}");
-            Log.Information($"              FullBuildMetaData: {GitVersion.FullBuildMetaData}");
+            Log.Information($"              FullBuildMetaData: {GitVersion.FullBuildMetaData}\n");
+
+            Log.Information($"             Safe NuGet Version: {GetSafeNuGetVersion()}");
+            Log.Information($"                      Copyright: {BuildCopyright()}");
         });
 
 
@@ -145,11 +148,10 @@ class Build : NukeBuild
                 .SetCopyright(BuildCopyright())
 
                 .SetVersion(GetSafeNuGetVersion())
-                //.SetVersionPrefix(GitVersion.MajorMinorPatch)
-                //.SetVersionSuffix(GitVersion.PreReleaseTag)
-
                 .SetAssemblyVersion(GitVersion.AssemblySemVer)
                 .SetFileVersion(GitVersion.AssemblySemFileVer)
+                .SetInformationalVersion(GitVersion.InformationalVersion)
+
                 .AddProperty("IncludeSourceRevisionInInformationalVersion", Configuration != Configuration.Release));
         });
 
@@ -179,11 +181,12 @@ class Build : NukeBuild
                 .SetCopyright(BuildCopyright())
 
                 .SetVersion(GetSafeNuGetVersion())
-                //.SetVersionPrefix(GitVersion.MajorMinorPatch)
-                //.SetVersionSuffix(GitVersion.PreReleaseTag)
-
                 .SetAssemblyVersion(GitVersion.AssemblySemVer)
                 .SetFileVersion(GitVersion.AssemblySemFileVer)
+                .SetInformationalVersion(GitVersion.InformationalVersion)
+
+                .EnableIncludeSymbols()
+
                 .AddProperty("IncludeSourceRevisionInInformationalVersion", Configuration != Configuration.Release)
                 .SetOutputDirectory(OutputDirectory)
             );
@@ -196,7 +199,7 @@ class Build : NukeBuild
         .Executes(() =>
         {
             LocalNuGetSourceDirectory.CreateDirectory();
-            OutputDirectory.GlobFiles("*.nupkg")
+            OutputDirectory.GlobFiles("*.nupkg", "*.snupkg")
                 .ForEach(pkgFile => File.Copy(pkgFile, LocalNuGetSourceDirectory / pkgFile.Name, true));
         });
 
@@ -263,7 +266,7 @@ class Build : NukeBuild
     {
         CultureInfo enUS = new CultureInfo("en-US");
         DateTime date = DateTime.ParseExact(GitVersion.CommitDate, "yyyy-MM-dd", enUS, DateTimeStyles.None);
-        string copyright = $"Copyright (c) {date.Year} Marc Behnke"
+        string copyright = $"Copyright © {date.Year} Marc Behnke"
             .Replace(",", HttpUtility.UrlEncode(","));
         return copyright;
     }

@@ -9,6 +9,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/Merlin9999/TidyData</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Merlin9999/TidyData</RepositoryUrl>
+    <IncludeSymbols>False</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>

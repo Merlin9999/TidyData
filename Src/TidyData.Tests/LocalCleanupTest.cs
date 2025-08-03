@@ -35,9 +35,31 @@ public class LocalCleanupTest
         FakeClock fakeClock = new FakeClock(SystemClock.Instance.GetCurrentInstant());
         var dbParams = new DBLocalAlgorithmSettings() { MinAgeToDeleteSoftDeletedDocs = Duration.FromDays(1), };
         Guid accountId = Guid.NewGuid();
-        var dbInfo = await CreateDBInfoAsync("LocalDBPhysicalDeletionOfSoftDeleted", accountId, true, dbParams, fakeClock);
+        var dbInfo = await CreateDBInfoAsync("LocalDBPhysicalDeletionOfSoftDeletedStoppedIfSoftDeletedDocReferencedByForeignKey", accountId, true, dbParams, fakeClock);
 
         await PhysicalDeletionStoppedIfSoftDeletedDocReferencedByForeignKeyImpl(dbInfo.DB, dbInfo.CleanupExecutor, fakeClock);
+    }
+
+    [Fact]
+    public async Task PhysicalDeletionCompletesNoChangesWhenNoDataYet()
+    {
+        FakeClock fakeClock = new FakeClock(SystemClock.Instance.GetCurrentInstant());
+        var dbParams = new DBLocalAlgorithmSettings() { MinAgeToDeleteSoftDeletedDocs = Duration.FromDays(1), };
+        Guid accountId = Guid.NewGuid();
+        var dbInfo = await CreateDBInfoAsync("PhysicalDeletionCompletesNoChangesWhenNoDataYet", accountId, true, dbParams, fakeClock);
+
+        await PhysicalDeletionCompletesNoChangesWhenNoDataYetImpl(dbInfo.DB, dbInfo.CleanupExecutor, fakeClock);
+    }
+
+    [Fact]
+    public async Task PhysicalDeletionCompletesNoChangesWhenNoDataYetOnFileSystem()
+    {
+        FakeClock fakeClock = new FakeClock(SystemClock.Instance.GetCurrentInstant());
+        var dbParams = new DBLocalAlgorithmSettings() { MinAgeToDeleteSoftDeletedDocs = Duration.FromDays(1), };
+        Guid accountId = Guid.NewGuid();
+        var dbInfo = await CreateDBInfoForFilesAsync("PhysicalDeletionCompletesNoChangesWhenNoDataYetForFiles", accountId, true, dbParams, fakeClock);
+
+        await PhysicalDeletionCompletesNoChangesWhenNoDataYetImpl(dbInfo.DB, dbInfo.CleanupExecutor, fakeClock);
     }
 
     private static async Task PhysicalDeletionOfSoftDeletedWithAgeOlderThanConfiguredImpl(
@@ -102,6 +124,18 @@ public class LocalCleanupTest
         localDocs.Should().BeEquivalentTo(expectedDocs);
     }
 
+    private static async Task PhysicalDeletionCompletesNoChangesWhenNoDataYetImpl(
+        Database<TestDataModel> localDB, DBLocalCleanupExecutor<TestDataModel> localCleanupExecutor,
+        FakeClock clock)
+    {
+        var expectedDocs = new List<TestDocument>() { };
+
+        await localCleanupExecutor.ExecuteAsync();
+
+        List<TestDocument> localDocs = await localDB.ExecuteAsync(new DocGetAllQuery() { IncludeDeleted = true });
+        localDocs.Should().BeEquivalentTo(expectedDocs);
+    }
+
     private async Task<TestDBInfo> CreateDBInfoAsync(string snapshotLogName, Guid accountId, bool supportQueryCaching,
         DBLocalAlgorithmSettings dbParams = null, IClock clock = null)
     {
@@ -111,6 +145,30 @@ public class LocalCleanupTest
             MinSnapshotCountBeforeEligibleForDeletion = 2,
             MaxSnapshotAgeToPreserveAll = Duration.FromMilliseconds(50),
         }, this._serializer);
+        if (supportQueryCaching)
+            dbStorage = new CacheDBStorageAdapter<TestDataModel>(dbStorage);
+
+        var db = new Database<TestDataModel>(dbStorage, clock: clock);
+        await db.DeleteDatabaseAsync();
+
+        var cleanupExecutor = new DBLocalCleanupExecutor<TestDataModel>(db, dbParams, clock);
+
+        return new TestDBInfo()
+        {
+            DB = db,
+            CleanupExecutor = cleanupExecutor,
+        };
+    }
+
+    private async Task<TestDBInfo> CreateDBInfoForFilesAsync(string snapshotLogName, Guid accountId, bool supportQueryCaching,
+        DBLocalAlgorithmSettings dbParams = null, IClock clock = null)
+    {
+        IDBStorage<TestDataModel> dbStorage = new FileDBStorage<TestDataModel>(new SnapshotLogSettings()
+        {
+            SnapshotLogName = snapshotLogName,
+            MinSnapshotCountBeforeEligibleForDeletion = 2,
+            MaxSnapshotAgeToPreserveAll = Duration.FromMilliseconds(50),
+        }, @".\", this._serializer);
         if (supportQueryCaching)
             dbStorage = new CacheDBStorageAdapter<TestDataModel>(dbStorage);
 
